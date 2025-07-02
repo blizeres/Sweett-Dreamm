@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweet Dream - Магазин тортов</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Days+One&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="header-line">
+                <div class="header-logo">
+                    <img src="logo.png" alt="Логотип Sweet Dream">
+                </div>
+                <div class="nav">
+                    <a class="nav-item" href="index.html">Главная</a>
+                    <a class="nav-item" href="fillings.html">Начинки</a>
+                </div>
+                <div class="cart">
+                    <a href="#" id="cart-icon">
+                        <img src="cart.png" alt="Корзина" width="60">
+                        <span id="cart-count">0</span>
+                    </a>
+                </div>
+            </div> 
+
+            <div class="products">
+                <!-- Ряд 1 -->
+                <div class="card">
+                    <div class="card__top">
+                        <div class="card__img">
+                            <img src="саке 1.jpg" alt="Торт 'Розовая мечта'">
+                        </div>
+                        <div class="card__bottom">
+                            <h3 class="card__title">Розовая мечта</h3>
+                            <div class="card__prices">8000 руб</div>
+                            <a href="#" class="card__btn" data-id="1">В корзину</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card__top">
+                        <div class="card__img">
+                            <img src="cake2.jpg" alt="Торт 'Звезда'">
+                        </div>
+                        <div class="card__bottom">
+                            <h3 class="card__title">Звезда</h3>
+                            <div class="card__prices">7500 руб</div>
+                            <a href="#" class="card__btn" data-id="2">В корзину</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ряд 2 -->
+                <div class="card">
+                    <div class="card__top">
+                        <div class="card__img">
+                            <img src="cake3.jpg" alt="Торт 'Клубничная фантазия'">
+                        </div>
+                        <div class="card__bottom">
+                            <h3 class="card__title">Клубничная фантазия</h3>
+                            <div class="card__prices">8200 руб</div>
+                            <a href="#" class="card__btn" data-id="3">В корзину</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card__top">
+                        <div class="card__img">
+                            <img src="cake4.jpg" alt="Торт 'Ванильное облако'">
+                        </div>
+                        <div class="card__bottom">
+                            <h3 class="card__title">Ванильное облако</h3>
+                            <div class="card__prices">7800 руб</div>
+                            <a href="#" class="card__btn" data-id="4">В корзину</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ряд 3 -->
+                <div class="card">
+                    <div class="card__top">
+                        <div class="card__img">
+                            <img src="cake5.jpg" alt="Торт 'Космос'">
+                        </div>
+                        <div class="card__bottom">
+                            <h3 class="card__title">Космос</h3>
+                            <div class="card__prices">7300 руб</div>
+                            <a href="#" class="card__btn" data-id="5">В корзину</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card__top">
+                        <div class="card__img">
+                            <img src="cake6.jpg" alt="Торт 'Желание'">
+                        </div>
+                        <div class="card__bottom">
+                            <h3 class="card__title">Желание</h3>
+                            <div class="card__prices">8500 руб</div>
+                            <a href="#" class="card__btn" data-id="6">В корзину</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно корзины -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Ваша корзина</h2>
+            <div id="cart-items"></div>
+            <div id="cart-total">Итого: 0 руб</div>
+            <button id="checkout-btn">Оформить заказ</button>
+        </div>
+    </div>
+
+    <!-- Модальное окно оформления заказа -->
+    <div id="order-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-order">&times;</span>
+            <h2>Оформление заказа</h2>
+            <form id="order-form">
+                <div class="form-group">
+                    <label for="customer_name">Имя</label>
+                    <input type="text" id="customer_name" name="customer_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="customer_phone">Телефон</label>
+                    <input type="tel" id="customer_phone" name="customer_phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="customer_address">Адрес доставки</label>
+                    <input type="text" id="customer_address" name="customer_address" required>
+                </div>
+                <button type="submit" id="submit-order-btn">Подтвердить заказ</button>
+            </form>
+            <div id="order-success" style="display:none; color: #4CAF50; margin-top: 20px; font-size: 18px; text-align:center;">Заказ успешно оформлен!</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

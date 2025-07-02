@@ -1,0 +1,410 @@
+body {
+    font-family: 'Days One', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff9f9;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.header-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.header-logo img {
+    height: 60px;
+}
+
+.nav {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-item {
+    color: #333;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+.nav-item:hover {
+    color: #e72848;
+}
+
+.cart {
+    position: relative;
+}
+
+.cart img {
+    transition: transform 0.3s;
+}
+
+.cart img:hover {
+    transform: scale(1.1);
+}
+
+#cart-count {
+    background: #e72848;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 8px;
+    font-size: 14px;
+    position: absolute;
+    top: -10px;
+    right: -5px;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    padding: 40px 0;
+}
+
+.card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card__img img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.card__bottom {
+    padding: 20px;
+    text-align: center;
+}
+
+.card__title {
+    font-size: 20px;
+    margin: 10px 0;
+    color: #333;
+}
+
+.card__prices {
+    font-size: 22px;
+    color: #e72848;
+    margin: 15px 0;
+    font-weight: bold;
+}
+
+.card__btn {
+    display: inline-block;
+    padding: 10px 25px;
+    background: white;
+    color: #e72848;
+    border: 2px solid #e72848;
+    border-radius: 25px;
+    text-decoration: none;
+    font-family: 'Days One', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.card__btn:hover {
+    background: #e72848;
+    color: white;
+}
+
+.card__btn.added-to-cart {
+    background: #e72848 !important;
+    color: #fff !important;
+    border-color: #e72848 !important;
+    box-shadow: 0 0 10px #e72848aa;
+    transform: scale(1.05);
+    transition: background 0.3s, color 0.3s, box-shadow 0.3s, transform 0.2s;
+}
+
+.card__btn.added-count {
+    background: #ffe3ea !important;
+    color: #e72848 !important;
+    border-color: #e72848 !important;
+    box-shadow: none;
+    font-weight: bold;
+    transition: background 0.3s, color 0.3s, border-color 0.3s;
+}
+
+/* Модальное окно */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 25px;
+    border-radius: 15px;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #000;
+}
+
+#cart-items {
+    margin: 20px 0;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-item h4 {
+    margin: 0 0 5px 0;
+    color: #333;
+}
+
+.cart-item p {
+    margin: 0;
+    color: #666;
+}
+
+.cart-item strong {
+    color: #e72848;
+}
+
+.remove-item {
+    background: none;
+    border: none;
+    border-radius: 50%;
+    color: #e72848;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: 15px;
+    padding: 5px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.remove-item:hover {
+    background: #ffe3ea;
+    color: #c41c3a;
+}
+
+.remove-item svg {
+    pointer-events: none;
+    display: block;
+}
+
+#cart-total {
+    font-size: 22px;
+    font-weight: bold;
+    text-align: right;
+    margin: 20px 0;
+    color: #e72848;
+}
+
+#checkout-btn {
+    display: block;
+    width: 100%;
+    background: #e72848;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-family: 'Days One', sans-serif;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+#checkout-btn:hover {
+    background: #c41c3a;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .products {
+        grid-template-columns: 1fr;
+    }
+    
+    .header-line {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .nav {
+        gap: 15px;
+    }
+    
+    .modal-content {
+        margin: 20% auto;
+        width: 90%;
+    }
+}
+
+/* Стили для страницы начинок */
+.page-title {
+    text-align: center;
+    color: #e72848;
+    margin: 40px 0;
+    font-size: 2.5rem;
+}
+
+.fillings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+    padding: 20px 0;
+}
+
+.filling-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.filling-card:hover {
+    transform: translateY(-5px);
+}
+
+.filling-img img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.filling-info {
+    padding: 20px;
+}
+
+.filling-info h3 {
+    color: #e72848;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+.filling-info p {
+    color: #666;
+    line-height: 1.5;
+}
+
+.nav-item.active {
+    color: #e72848 !important;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .fillings-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/* Добавьте эти стили в конец файла style.css */
+
+#cart-count {
+    display: none; /* Сначала скрываем, покажет JS при добавлении товаров */
+    background: #e72848;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 8px;
+    font-size: 14px;
+    position: absolute;
+    top: -10px;
+    right: -5px;
+}
+
+.card__btn {
+    display: inline-block;
+    padding: 10px 25px;
+    background: white;
+    color: #e72848;
+    border: 2px solid #e72848;
+    border-radius: 25px;
+    text-decoration: none;
+    font-family: 'Days One', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.card__btn:hover {
+    background: #e72848;
+    color: white;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    color: #e72848;
+    font-weight: bold;
+}
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: 'Days One', sans-serif;
+    box-sizing: border-box;
+}
+#submit-order-btn {
+    display: block;
+    width: 100%;
+    background: #e72848;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-family: 'Days One', sans-serif;
+    font-size: 16px;
+    transition: background 0.3s;
+    margin-top: 10px;
+}
+#submit-order-btn:hover {
+    background: #c41c3a;
+}
+#order-success {
+    color: #4CAF50;
+    margin-top: 20px;
+    font-size: 18px;
+    text-align: center;
+}

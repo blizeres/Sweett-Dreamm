@@ -1,0 +1,13 @@
+{
+  "name": "cake-shop",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs"
+  },
+  "dependencies": {
+    "better-sqlite3": "^8.6.0",
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
+  }
+}
